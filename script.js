@@ -1,21 +1,21 @@
-const predefinedPhotos = [
-    { src: 'images/image1.jpg', lat: 40.7128, lon: -74.0060 },
-    { src: 'images/image2.jpg', lat: 40.7589, lon: -73.9851 },
-    { src: 'images/image3.jpg', lat: 40.7484, lon: -73.9857 },
-    { src: 'images/image4.jpg', lat: 40.7185, lon: -73.9969 },
-    { src: 'images/image5.jpg', lat: 40.7484, lon: -73.9857 },
-    { src: 'images/image6.jpg', lat: 40.7516, lon: -73.9776 },
-    { src: 'images/image7.jpg', lat: 40.7395, lon: -73.9896 },
-    { src: 'images/image8.jpg', lat: 40.7614, lon: -73.9776 },
-    { src: 'images/image9.jpg', lat: 40.7587, lon: -73.9787 },
-    { src: 'images/image10.jpg', lat: 40.7308, lon: -73.9973 },
-];
-
 document.addEventListener('DOMContentLoaded', () => {
     const addPhotoBtn = document.getElementById('addPhotoBtn');
     const enterARBtn = document.getElementById('enterARBtn');
     const photoInput = document.getElementById('photoInput');
     const photoList = document.getElementById('photoList');
+
+    const predefinedPhotos = [
+        { src: 'images/im1.png', lat: 40.7128, lon: -74.0060 },
+        { src: 'images/im2.png', lat: 40.7589, lon: -73.9851 },
+        { src: 'images/im3.png', lat: 40.7484, lon: -73.9857 },
+        { src: 'images/im4.png', lat: 40.7185, lon: -73.9969 },
+        { src: 'images/im5.png', lat: 40.7484, lon: -73.9857 },
+        { src: 'images/im6.png', lat: 40.7516, lon: -73.9776 },
+        { src: 'images/im7.png', lat: 40.7395, lon: -73.9896 },
+        { src: 'images/im8.png', lat: 40.7614, lon: -73.9776 },
+        { src: 'images/im9.png', lat: 40.7587, lon: -73.9787 },
+        { src: 'images/im10.png', lat: 40.7308, lon: -73.9973 },
+    ];
 
     addPhotoBtn.addEventListener('click', () => {
         photoInput.click();
@@ -79,14 +79,14 @@ document.addEventListener('DOMContentLoaded', () => {
         photoList.appendChild(photoItem);
     }
 
- function loadExistingPhotos() {
-    let photos = JSON.parse(localStorage.getItem('arPhotos')) || [];
-    if (photos.length === 0) {
-        photos = predefinedPhotos;
-        localStorage.setItem('arPhotos', JSON.stringify(photos));
+    function loadExistingPhotos() {
+        let photos = JSON.parse(localStorage.getItem('arPhotos')) || [];
+        if (photos.length === 0) {
+            photos = predefinedPhotos;
+            localStorage.setItem('arPhotos', JSON.stringify(photos));
+        }
+        photos.forEach(displayPhoto);
     }
-    photos.forEach(displayPhoto);
-}
 
     loadExistingPhotos();
 });

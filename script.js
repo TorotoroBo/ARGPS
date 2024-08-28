@@ -5,9 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const photoList = document.getElementById('photoList');
 
     const predefinedPhotos = [
-        { src: 'images/im1.png', lat: 40.7128, lon: -74.0060 },
-        { src: 'images/im2.png', lat: 40.7589, lon: -73.9851 },
-        { src: 'images/im3.png', lat: 40.7484, lon: -73.9857 },
+        { src: 'images/im1.png', lat: -11.015374, lon: -66.043001 },
+        { src: 'images/im2.png', lat: -11.015522, lon: -66.043581 },
+        { src: 'images/im3.png', lat: -10.998454, lon: -66.077323 },
         { src: 'images/im4.png', lat: 40.7185, lon: -73.9969 },
         { src: 'images/im5.png', lat: 40.7484, lon: -73.9857 },
         { src: 'images/im6.png', lat: 40.7516, lon: -73.9776 },

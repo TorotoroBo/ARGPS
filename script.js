@@ -79,10 +79,14 @@ document.addEventListener('DOMContentLoaded', () => {
         photoList.appendChild(photoItem);
     }
 
-    function loadExistingPhotos() {
-        const photos = JSON.parse(localStorage.getItem('arPhotos')) || [];
-        photos.forEach(displayPhoto);
+ function loadExistingPhotos() {
+    let photos = JSON.parse(localStorage.getItem('arPhotos')) || [];
+    if (photos.length === 0) {
+        photos = predefinedPhotos;
+        localStorage.setItem('arPhotos', JSON.stringify(photos));
     }
+    photos.forEach(displayPhoto);
+}
 
     loadExistingPhotos();
 });

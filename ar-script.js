@@ -4,6 +4,7 @@ let nearestPhotos = [];
 document.addEventListener('DOMContentLoaded', () => {
     const scene = document.querySelector('a-scene');
     const backButton = document.getElementById('backButton');
+    const loadingMessage = document.getElementById('loadingMessage');
     const arrows = [
         document.getElementById('arrow1'),
         document.getElementById('arrow2'),
@@ -81,8 +82,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 };
                 updateNearestPhotos();
                 updateArrows();
+                
+                // Ocultar el mensaje de carga una vez que tengamos la posición del usuario
+                loadingMessage.style.display = 'none';
             },
-            (error) => console.error('Error getting location:', error),
+            (error) => {
+                console.error('Error getting location:', error);
+                loadingMessage.innerHTML = `
+                    <h2>Error de Geolocalización</h2>
+                    <p>No se pudo obtener su ubicación. Por favor, asegúrese de que su dispositivo tenga el GPS activado y que haya dado permiso para acceder a su ubicación.</p>
+                    <p>Error: ${error.message}</p>
+                `;
+            },
             { enableHighAccuracy: true, maximumAge: 0, timeout: 5000 }
         );
     }

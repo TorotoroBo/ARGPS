@@ -24,19 +24,19 @@
             cursor: pointer;
         }
         .direction-arrow {
-    position: fixed;
-    width: 50px;
-    height: 50px;
-    background-color: rgba(255, 255, 255, 0.7);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    font-weight: bold;
-    z-index: 1000;
-    bottom: 20px; /* Asegura que las flechas estén en la parte inferior */
-}
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            z-index: 1000;
+            bottom: 20px;
+        }
         #loadingMessage {
             position: fixed;
             top: 50%;
@@ -69,27 +69,5 @@
         arjs="sourceType: webcam; debugUIEnabled: true; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
         <a-camera gps-camera rotation-reader fov="80" near="1" far="10000"></a-camera>
     </a-scene>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const scene = document.querySelector('a-scene');
-            
-            scene.addEventListener('loaded', function () {
-                console.log('AR Scene loaded');
-            });
-
-            scene.addEventListener('camera-init', function () {
-                console.log('Camera initialized');
-            });
-
-            scene.addEventListener('camera-error', function (error) {
-                console.error('Camera error:', error);
-                document.getElementById('loadingMessage').innerHTML = `
-                    <h2>Error de Cámara</h2>
-                    <p>No se pudo acceder a la cámara. Por favor, asegúrese de que su dispositivo tenga una cámara y que haya dado permiso para acceder a ella.</p>
-                    <p>Error: ${error.detail.message}</p>
-                `;
-            });
-        });
-    </script>
 </body>
 </html>

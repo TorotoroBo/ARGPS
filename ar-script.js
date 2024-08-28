@@ -68,8 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
             arrow.style.transform = `rotate(${direction}deg)`;
             arrow.textContent = '↑';
             arrow.style.left = `${10 + index * 60}px`;
-            arrow.style.bottom = '20px';
-            arrow.style.display = 'flex'; // Asegurarse de que la flecha sea visible
+            arrow.style.display = 'flex';
+            
+            // Mostrar información de depuración
+            console.log(`Flecha ${index + 1}: Distancia: ${photo.distance.toFixed(2)}km, Dirección: ${direction.toFixed(2)}°`);
         });
     }
 
@@ -86,6 +88,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Ocultar el mensaje de carga una vez que tengamos la posición del usuario
                 loadingMessage.style.display = 'none';
+                
+                // Mostrar información de depuración
+                console.log(`Posición del usuario: Lat: ${userPosition.latitude.toFixed(6)}, Lon: ${userPosition.longitude.toFixed(6)}, Heading: ${userPosition.heading.toFixed(2)}°`);
             },
             (error) => {
                 console.error('Error getting location:', error);
@@ -100,8 +105,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     scene.addEventListener('loaded', () => {
+        console.log('Escena AR cargada');
         loadARContent();
         watchPosition();
+    });
+
+    scene.addEventListener('camera-init', (data) => {
+        console.log('Cámara AR inicializada');
+    });
+
+    scene.addEventListener('camera-error', (error) => {
+        console.error('Error de cámara AR:', error);
     });
 
     // Actualizar las flechas cada segundo

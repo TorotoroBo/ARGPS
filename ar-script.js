@@ -69,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
             arrow.textContent = '↑';
             arrow.style.left = `${10 + index * 60}px`;
             arrow.style.bottom = '20px';
+            arrow.style.display = 'flex'; // Asegurarse de que la flecha sea visible
         });
     }
 

@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AR View</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
     <script src="ar-script.js" defer></script>
     <style>
         body {
@@ -66,8 +65,30 @@
     <a-scene
         vr-mode-ui="enabled: false"
         embedded
-        arjs='sourceType: webcam; debugUIEnabled: false; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960;'>
+        arjs="sourceType: webcam; debugUIEnabled: true; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
         <a-camera gps-camera rotation-reader></a-camera>
     </a-scene>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const scene = document.querySelector('a-scene');
+            
+            scene.addEventListener('loaded', function () {
+                console.log('AR Scene loaded');
+            });
+
+            scene.addEventListener('camera-init', function () {
+                console.log('Camera initialized');
+            });
+
+            scene.addEventListener('camera-error', function (error) {
+                console.error('Camera error:', error);
+                document.getElementById('loadingMessage').innerHTML = `
+                    <h2>Error de Cámara</h2>
+                    <p>No se pudo acceder a la cámara. Por favor, asegúrese de que su dispositivo tenga una cámara y que haya dado permiso para acceder a ella.</p>
+                    <p>Error: ${error.detail.message}</p>
+                `;
+            });
+        });
+    </script>
 </body>
 </html>

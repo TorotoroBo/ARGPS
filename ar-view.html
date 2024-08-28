@@ -66,7 +66,18 @@
     <a-scene
         vr-mode-ui="enabled: false"
         embedded
-        arjs="sourceType: webcam; debugUIEnabled: true; detectionMode: mono_and_matrix; matrixCodeType: 3x3; sourceWidth: 1280; sourceHeight: 960; displayWidth: 1280; displayHeight: 960;">
+        arjs="sourceType: webcam; 
+              debugUIEnabled: true; 
+              sourceWidth: 1280; 
+              sourceHeight: 960; 
+              displayWidth: 1280; 
+              displayHeight: 960; 
+              maxDetectionRate: 60;
+              canvasWidth: 1280; 
+              canvasHeight: 960; 
+              trackingMethod: best;
+              areaLearningButton: false;
+              debugUIEnabled: false;">
         <a-camera gps-camera="simulateLatitude: -11.015374; simulateLongitude: -66.043001" rotation-reader></a-camera>
      </a-scene>
     <script>

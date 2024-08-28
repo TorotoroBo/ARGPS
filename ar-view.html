@@ -66,7 +66,7 @@
         vr-mode-ui="enabled: false"
         embedded
         arjs="sourceType: webcam; debugUIEnabled: true; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
-        <a-camera gps-camera rotation-reader></a-camera>
+        <a-camera gps-camera rotation-reader fov="80" near="1" far="10000"></a-camera>
     </a-scene>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
